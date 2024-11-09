@@ -56,9 +56,10 @@ conn.commit()
 cursor.execute("INSERT INTO test_table_2 (description) VALUES (%s)", ("This is a test table 2",))
 conn.commit()
 
-# Insert your name into the third table (test_table_3)
-cursor.execute("INSERT INTO test_table_3 (full_name) VALUES (%s)", ("Muhammad Kashif",))
+# Insert data into the second table (test_table_2)
+cursor.execute("INSERT INTO test_table_2 (description) VALUES (%s)", ("This is a test table 2",))
 conn.commit()
+
 
 # Fetch data
 cursor.execute("SELECT * FROM test_table;")
