@@ -9,10 +9,11 @@ db_password = os.getenv('DB_PASSWORD')
 
 # Connect to the RDS instance
 conn = psycopg2.connect(
-    host=db_host,
-    database=db_name,
-    user=db_user,
-    password=db_password
+    host=os.getenv('DB_HOST'),  # RDS instance endpoint
+    port=5432,                  # Default PostgreSQL port
+    dbname=os.getenv('DB_NAME'),  # The name of the database
+    user=os.getenv('DB_USER'),    # Your RDS master username
+    password=os.getenv('DB_PASSWORD')  # Your RDS password
 )
 cursor = conn.cursor()
 
