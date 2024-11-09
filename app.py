@@ -30,14 +30,34 @@ CREATE TABLE IF NOT EXISTS test_table (
 """)
 conn.commit()
 
+# Create another table for testing (test_table_2)
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS test_table_2 (
+    id SERIAL PRIMARY KEY,
+    description VARCHAR(100)
+);
+""")
+conn.commit()
+
 # Insert data
 cursor.execute("INSERT INTO test_table (name) VALUES (%s)", ("DevOps Class",))
+conn.commit()
+
+# Insert data into the second table (test_table_2)
+cursor.execute("INSERT INTO test_table_2 (description) VALUES (%s)", ("This is a test table 2",))
 conn.commit()
 
 # Fetch data
 cursor.execute("SELECT * FROM test_table;")
 rows = cursor.fetchall()
 for row in rows:
+    print(row)
+
+# Fetch data from the second table (test_table_2)
+cursor.execute("SELECT * FROM test_table_2;")
+rows_2 = cursor.fetchall()
+print("\nData from test_table_2:")
+for row in rows_2:
     print(row)
 
 cursor.close()
